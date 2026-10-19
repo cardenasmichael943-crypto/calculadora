@@ -13,5 +13,3 @@ def calcular_multiplicacion (numero1: float, numero2: float) ->float:
 def calcular_division (numero1: int, numero2: int)->int:
     division = numero1 / numero2
     return division
-
-print("A Danny le gusta John")
