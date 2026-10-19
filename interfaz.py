@@ -1,5 +1,7 @@
 import calculadora as calc
 
+
+
 def ejecutar_calculadora()->None:
     suma_total = 0
     resta_total = 0
@@ -7,8 +9,8 @@ def ejecutar_calculadora()->None:
     division_total = 0
 
     while True:
+        operacion = input ("¿que operacion deseas realizar? \n Suma = + \n Resta = - \n Multiplicación = x \n División = ÷ \n  ")
         numero1 = float (input("ingresar numero 1: "))
-        operacion = input ("¿que operacion deseas realizar? suma=1, resta=2, multiplicacion=3, division=4: ")
         numero2 = float (input("ingresar numero 2: "))
 
         if operacion == "1":
@@ -24,14 +26,12 @@ def ejecutar_calculadora()->None:
             resultado = calc.calcular_division(numero1, numero2)
             division_total /= resultado
         else:
-            print("operacion no valida")
+            print("Operación no válida")
 
       
-        continuar = input("deseas ingresar mas numeros: si=1, no=2")
+        continuar = input("Deseas ingresar más numeros: \n Si = 1 \n No = 2 \n")
         if continuar == "2":
             
-
-
 
             print(suma_total)
             print(resta_total)
