@@ -31,7 +31,8 @@ def ejecutar_calculadora()->None:
       
         continuar = input("Deseas ingresar más numeros: \n Si = 1 \n No = 2 \n")
         if continuar == "2":
-            
+            if suma_total != 0:
+                print(suma_total)
 
             print(suma_total)
             print(resta_total)
