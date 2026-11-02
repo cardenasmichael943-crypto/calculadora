@@ -38,3 +38,34 @@ def sumar_fracciones(num1, den1, num2, den2):
     denominador = denominador // divisor
 
     return numerador, denominador
+
+
+def restar_fracciones(num1, den1, num2, den2):
+    numerador = num1 * den2 - num2 * den1
+    denominador = den1 * den2
+
+    divisor = calcular_divisor_comun(numerador, denominador)
+    numerador = numerador // divisor
+    denominador = denominador // divisor
+
+    return numerador, denominador
+
+def multiplicar_fracciones(num1, den1, num2, den2):
+    numerador = num1 * num2 
+    denominador = den1 * den2
+
+    divisor = calcular_divisor_comun(numerador, denominador)
+    numerador = numerador // divisor
+    denominador = denominador // divisor
+
+    return numerador, denominador
+
+def division_fracciones(num1, den1, num2, den2):
+    numerador = num1 * den2 
+    denominador = num2 * den1
+
+    divisor = calcular_divisor_comun(numerador, denominador)
+    numerador = numerador // divisor
+    denominador = denominador // divisor
+
+    return numerador, denominador

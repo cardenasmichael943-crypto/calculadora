@@ -17,6 +17,10 @@ def ejecutar_calculadora():
         print("4.division")
         print("5.raiz cuadrada")
         print("6.suma de fracciones")
+        print("7.resta de fracciones")
+        print("8.multiplicacion de fracciones")
+        print("9.division de fracciones")
+
 
 
         print("--------------------------------------------")
@@ -26,7 +30,7 @@ def ejecutar_calculadora():
 
         print("-------------------------------------------")
 
-        if operacion not in ["1", "2", "3", "4", "5", "6"]:
+        if operacion not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             print("esta opcion no esta")
             break 
 
@@ -40,6 +44,7 @@ def ejecutar_calculadora():
                 resultado = calcular_raiz(numero)
                 print(resultado)
                 break
+
         if operacion == "6":
 
             print("primera fraccion")
@@ -60,6 +65,67 @@ def ejecutar_calculadora():
             print("el resultado es:", numerador, "/", denominador)
             break
 
+        if operacion == "7":
+            
+            print("primera fraccion")
+            num1 = int(input("numerador: "))
+            den1 = int(input("denominador: "))
+            while den1 == 0:
+                print("el denominador no puede ser 0")
+                den1 = int(input("denominador: "))
+            
+            print("segunda fraccion")
+            num2 = int(input("numerador: "))
+            den2 = int(input("denominador: "))
+            while den2 == 0:
+                print("el denominador no puede ser 0")
+                den2 = int(input("denominador: "))
+            
+            numerador, denominador = restar_fracciones(num1, den1, num2, den2)
+            print("el resultado es:", numerador, "/", denominador)
+            break
+                
+        if operacion == "8":
+            
+            print("primera fraccion")
+            num1 = int(input("numerador: "))
+            den1 = int(input("denominador: "))
+            while den1 == 0:
+                print("el denominador no puede ser 0")
+                den1 = int(input("denominador: "))
+            
+            print("segunda fraccion")
+            num2 = int(input("numerador: "))
+            den2 = int(input("denominador: "))
+            while den2 == 0:
+                print("el denominador no puede ser 0")
+                den2 = int(input("denominador: "))
+            
+            numerador, denominador = multiplicar_fracciones(num1, den1, num2, den2)
+            print("el resultado es:", numerador, "/", denominador)
+            break
+
+
+        if operacion == "9":
+                    
+            print("primera fraccion")
+            num1 = int(input("numerador: "))
+            den1 = int(input("denominador: "))
+            while den1 == 0:
+                print("el denominador no puede ser 0")
+                den1 = int(input("denominador: "))
+            
+            print("segunda fraccion")
+            num2 = int(input("numerador: "))
+            den2 = int(input("denominador: "))
+            while den2 == 0:
+                print("el denominador no puede ser 0")
+                den2 = int(input("denominador: "))
+            
+            numerador, denominador = division_fracciones(num1, den1, num2, den2)
+            print("el resultado es:", numerador, "/", denominador)
+            break
+                    
         numero1 = float(input("ingresa el primer numero: "))
         numero2 = float(input("ingresa el segundo numero: "))
 
