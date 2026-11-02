@@ -1,43 +1,107 @@
-import calculadora as calc
+from calculadora import *
 
 
-
-def ejecutar_calculadora()->None:
-    suma_total = 0
-    resta_total = 0
-    multiplicacion_total = 1
-    division_total = 0
+def ejecutar_calculadora():
 
     while True:
-        operacion = input ("¿que operacion deseas realizar? \n Suma = + \n Resta = - \n Multiplicación = x \n División = ÷ \n digite su opcion: ")
-       
-        if operacion == "+":
-            numero1 = float (input("ingresar numero 1: "))
-            numero2 = float (input("ingresar numero 2: "))
-            resultado = calc.calcular_suma(numero1, numero2)
-            suma_total += resultado
-        elif operacion == "2":
-            resultado = calc.calcular_resta(numero1, numero2)
-            resta_total -= resultado
-        elif operacion == "3":
-            resultado = calc.calcular_multiplicacion(numero1, numero2)
-            multiplicacion_total *= resultado
-        elif operacion == "4":
-            resultado = calc.calcular_division(numero1, numero2)
-            division_total /= resultado
-        else:
-            print("Operación no válida")
 
-      
-        continuar = input("Deseas ingresar más numeros: \n Si = 1 \n No = 2 \n elegir: ")
-         
-        if continuar == "2":
-            if suma_total != 0:
-                print("el resultado es:",suma_total)
+        resultado = 0
 
-        
+        print("----------CALCULADORA EN PYTHON--------------------")
 
+        print("---------------------------------------------------")
+
+        print("1.suma")
+        print("2.resta")
+        print("3.multiplicacion")
+        print("4.division")
+        print("5.raiz cuadrada")
+        print("6.suma de fracciones")
+
+
+        print("--------------------------------------------")
+
+        operacion = input("ingresa el numero de la operacion que deseas: ")
+
+
+        print("-------------------------------------------")
+
+        if operacion not in ["1", "2", "3", "4", "5", "6"]:
+            print("esta opcion no esta")
+            break 
+
+
+        if operacion == "5":
             
+            numero = int(input("ingresa el numero: "))
+            if numero < 0:
+                print("no existe raiz cuadrada real de un numero negativo")
+            else:
+                resultado = calcular_raiz(numero)
+                print(resultado)
+                break
+        if operacion == "6":
+
+            print("primera fraccion")
+            num1 = int(input("numerador: "))
+            den1 = int(input("denominador: "))
+            while den1 == 0:
+                print("el denominador no puede ser 0")
+                den1 = int(input("denominador: "))
+
+            print("segunda fraccion")
+            num2 = int(input("numerador: "))
+            den2 = int(input("denominador: "))
+            while den2 == 0:
+                print("el denominador no puede ser 0")
+                den2 = int(input("denominador: "))
+
+            numerador, denominador = sumar_fracciones(num1, den1, num2, den2)
+            print("el resultado es:", numerador, "/", denominador)
             break
+
+        numero1 = float(input("ingresa el primer numero: "))
+        numero2 = float(input("ingresa el segundo numero: "))
+
+       
+        if operacion == "1":
+            resultado = calcular_suma(numero1, numero2)
+        elif operacion == "2":
+            resultado = calcular_resta(numero1, numero2)
+        elif operacion == "3":
+            resultado = calcular_multiplicacion(numero1, numero2)
+        elif operacion == "4":
+            resultado = calcular_division(numero1, numero2)
+        
+        print(resultado)
+
+        while True:
+
+            print("----------------------------------------------")
+            otro_numero= input("deseas ingresar otro numero si-no: ")
+            if otro_numero == "no":
+                break
+
+            numero3 = float(input("ingresar otro numero: "))
+
+            if operacion == "1":
+                resultado = calcular_suma(resultado,numero3)
+
+            elif operacion == "2":
+                resultado = calcular_resta(resultado, numero3)
+
+            elif operacion == "3":
+                resultado = calcular_multiplicacion(resultado, numero3)
+
+            elif operacion == "4":
+                resultado = calcular_division(resultado, numero3)
+
+           
+            
+
+            print(resultado)
+
+        break
+
 
 ejecutar_calculadora()
