@@ -69,3 +69,28 @@ def division_fracciones(num1, den1, num2, den2):
     denominador = denominador // divisor
 
     return numerador, denominador
+
+
+
+def es_binario(texto):
+    if texto == "":
+        return False
+
+    posicion = 0
+    while posicion < len(texto):
+        if texto[posicion] != "0" and texto[posicion] != "1":
+            return False
+        posicion = posicion + 1
+
+    return True
+
+
+def binario_a_decimal(binario):
+    decimal = 0
+
+    posicion = 0
+    while posicion < len(binario):
+        decimal = decimal * 2 + int(binario[posicion])
+        posicion = posicion + 1
+
+    return decimal

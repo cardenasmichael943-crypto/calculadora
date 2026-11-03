@@ -20,7 +20,7 @@ def ejecutar_calculadora():
         print("7.resta de fracciones")
         print("8.multiplicacion de fracciones")
         print("9.division de fracciones")
-
+        print("10.comvertir binario a dedimal")
 
 
         print("--------------------------------------------")
@@ -30,7 +30,7 @@ def ejecutar_calculadora():
 
         print("-------------------------------------------")
 
-        if operacion not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        if operacion not in ["1", "2", "3", "4", "5", "6", "7", "8", "9","10"]:
             print("esta opcion no esta")
             break 
 
@@ -50,6 +50,7 @@ def ejecutar_calculadora():
             print("primera fraccion")
             num1 = int(input("numerador: "))
             den1 = int(input("denominador: "))
+            print("------------------------------------------------")
             while den1 == 0:
                 print("el denominador no puede ser 0")
                 den1 = int(input("denominador: "))
@@ -70,6 +71,7 @@ def ejecutar_calculadora():
             print("primera fraccion")
             num1 = int(input("numerador: "))
             den1 = int(input("denominador: "))
+            print("----------------------------------------------")
             while den1 == 0:
                 print("el denominador no puede ser 0")
                 den1 = int(input("denominador: "))
@@ -90,6 +92,7 @@ def ejecutar_calculadora():
             print("primera fraccion")
             num1 = int(input("numerador: "))
             den1 = int(input("denominador: "))
+            print("--------------------------------------")
             while den1 == 0:
                 print("el denominador no puede ser 0")
                 den1 = int(input("denominador: "))
@@ -111,6 +114,7 @@ def ejecutar_calculadora():
             print("primera fraccion")
             num1 = int(input("numerador: "))
             den1 = int(input("denominador: "))
+            print("---------------------------------------")
             while den1 == 0:
                 print("el denominador no puede ser 0")
                 den1 = int(input("denominador: "))
@@ -124,6 +128,18 @@ def ejecutar_calculadora():
             
             numerador, denominador = division_fracciones(num1, den1, num2, den2)
             print("el resultado es:", numerador, "/", denominador)
+            break
+
+
+        if operacion == "10":
+
+            binario = input("ingresa el numero binario: ")
+            while es_binario(binario) == False:
+                print("un numero binario solo tiene 0 y 1")
+                binario = input("ingresa el numero binario: ")
+
+            decimal = binario_a_decimal(binario)
+            print("el numero en decimal es:", decimal)
             break
                     
         numero1 = float(input("ingresa el primer numero: "))
@@ -146,6 +162,9 @@ def ejecutar_calculadora():
             print("----------------------------------------------")
             otro_numero= input("deseas ingresar otro numero si-no: ")
             if otro_numero == "no":
+                print("el resultado total es:", resultado)
+            else:
+                print("esta opcion no es valida")
                 break
 
             numero3 = float(input("ingresar otro numero: "))
