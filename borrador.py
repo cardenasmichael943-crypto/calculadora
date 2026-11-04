@@ -1,7 +1,13 @@
-from calculadora import *
+#este es nuestro archivo pincipal para ejecutar la calculadora
 
 
-def ejecutar_calculadora():
+
+from calculadora import *      #importamos el archivo calculadora.py que es donde tenemos la funciones 
+                                 #de nuestra calculadora
+                                                  
+
+
+def ejecutar_calculadora():   #la funcion principal para ejecutar todo el programa
 
     while True:
 
@@ -163,8 +169,7 @@ def ejecutar_calculadora():
             otro_numero= input("deseas ingresar otro numero si-no: ")
             if otro_numero == "no":
                 print("el resultado total es:", resultado)
-            else:
-                print("esta opcion no es valida")
+        
                 break
 
             numero3 = float(input("ingresar otro numero: "))
