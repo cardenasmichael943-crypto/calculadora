@@ -94,3 +94,38 @@ def binario_a_decimal(binario):
         posicion = posicion + 1
 
     return decimal
+
+def calcular_potencia(base, exponente):
+    potencia = base ** exponente  
+    return potencia
+
+def decimal_a_binario(numero):
+    if numero == 0:
+        return "0"
+
+    binario = ""
+    while numero > 0:
+        resto = numero % 2
+        binario = str(resto) + binario
+        numero = numero // 2
+
+    return binario
+
+def sumar_binarios(binario1, binario2):
+    decimal1 = binario_a_decimal(binario1)
+    decimal2 = binario_a_decimal(binario2)
+    suma = decimal1 + decimal2
+    resultado = decimal_a_binario(suma)
+    return resultado
+
+def resta_binarios(binario1, binario2):
+    decimal1 = binario_a_decimal(binario1)
+    decimal2 = binario_a_decimal(binario2)
+    resta = decimal1 - decimal2
+
+    if resta < 0:
+        resultado = "-" + decimal_a_binario(resta * -1)
+    else:
+        resultado = decimal_a_binario(resta)
+
+    return resultado
