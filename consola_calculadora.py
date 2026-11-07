@@ -1,17 +1,33 @@
 #este es nuestro archivo pincipal para ejecutar la calculadora
 
+#¿que haces este archivo?
+#este arcchivo hace tres cosas cuando se ejecuta las cuales son:
+#   1. muestra el menu de opciones
+#   2.Pide al usuario los datos (numeros, fraciones, binarios, etc...)
+#   3. Llama a las funciones de calculadora.py para hacer la cuenta
+#      y muestra el resultado.
 
 
-from calculadora import *      #importamos el archivo calculadora.py que es donde tenemos la funciones 
-                                 #de nuestra calculadora
+
+
+from calculadora import *      #Importamos el archvivo calculadora.py, para traer
+                               #traer todas las funciones y poder usarlas aqui
                                                   
 
 
 def ejecutar_calculadora():   #la funcion principal para ejecutar todo el programa
 
+# CICLO PRINCIPAL
+    # Como es "while True", se repite una y otra vez: muestra el menu,
+    # hace una operacion y vuelve a mostrar el menu.
+    # Solo se detiene con un "break" (opcion 0 u opcion que no existe).
     while True:
 
-        resultado = 0
+        resultado = 0   #aqui se guarda el resultado de cada  operacion y en cada
+                        #vuelta vuelve a empezar en 0
+
+
+                        #Menu 
 
         print("----------CALCULADORA EN PYTHON--------------------")
 
@@ -36,29 +52,47 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
 
         print("--------------------------------------------")
 
+    # Pide la opcion. Se guarda como texto, por eso mas abajo
+    # se compara con comillas: operacion == "1"
         operacion = input("ingresa el numero de la operacion que deseas: ")
 
 
         print("-------------------------------------------")
 
+
+        #Bloqueo: si lo que escribio el usuario No esta en la lista de oopciones
+        #Valida, avisa y cierra el programa 
         if operacion not in ["0","1", "2", "3", "4", "5", "6", "7", "8", "9","10","11","12","13","14"]:
             print("esta opcion no esta")
-            break 
+            break  #sale del ciclo principal  y termina el programa
 
+
+            #Opciones 1 al 4: Operaciones Basicas
+            #Las cuatro hacen lo mismo: piden dos numeros, llaman a la
+            #funcion que corresponda y muestran el resultado
 
         if operacion == "1":
+#operacion 1 suma 
             numero1 = float(input("ingresa el primer numero: "))
+        #pide el primer numero, esta con float para poder ingresar numeros enteros 
+        #y decimales
             numero2 = float(input("ingresa el segundo numero: "))
+        #pide el segundo numero
             resultado = calcular_suma(numero1, numero2)
+        #llama a a la funcion suma 
             print(resultado)
 
+
         elif operacion == "2":
+#operacion 2 resta
+
             numero1 = float(input("ingresa el primer numero: "))
             numero2 = float(input("ingresa el segundo numero: "))
             resultado = calcular_resta(numero1, numero2)
             print(resultado)
 
         elif operacion == "3":
+#operacion 3 multiplicacion 
 
             numero1 = float(input("ingresa el primer numero: "))
             numero2 = float(input("ingresa el segundo numero: "))
@@ -66,17 +100,26 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             print(resultado)
 
         elif operacion == "4":
+#operacion 4 division
+        
             numero1 = float(input("ingresa el primer numero: "))
             numero2 = float(input("ingresa el segundo numero: "))
             resultado = calcular_division(numero1, numero2)
             print(resultado)
-       
+            #aca si el numero2 vale 0, el programa se cae ya que no se
+            #puede dividir entre cero
+
+
+                        #operacion 5: Raiz cuadrada
         elif operacion == "5":
             
-            numero = int(input("ingresa el numero: "))
+            numero = int(input("ingresa el numero: ")) 
+            #pide un numero entero
             if numero < 0:
                 print("no existe raiz cuadrada real de un numero negativo")
-            else:
+                #si es negativo no hay raiz 
+
+            else:           #si no es negativo calcula la raiz cuadrada y da el resultado
                 resultado = calcular_raiz(numero)
                 print(resultado)
                 
