@@ -81,7 +81,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
         #pide el segundo numero
             resultado = calcular_suma(numero1, numero2)
         #llama a a la funcion suma 
-            print(resultado)
+            print(f"ans: {resultado}")
 
 
         elif operacion == "2":
@@ -90,7 +90,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             numero1 = float(input("ingresa el primer numero: "))
             numero2 = float(input("ingresa el segundo numero: "))
             resultado = calcular_resta(numero1, numero2)
-            print(resultado)
+            print(f"ans: {resultado}")
 
         elif operacion == "3":
 #operacion 3 multiplicacion 
@@ -98,7 +98,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             numero1 = float(input("ingresa el primer numero: "))
             numero2 = float(input("ingresa el segundo numero: "))
             resultado = calcular_multiplicacion(numero1, numero2)
-            print(resultado)
+            print(f"ans: {resultado}")
 
         elif operacion == "4":
 #operacion 4 division
@@ -109,7 +109,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
                 print("no se puede dividir entre cero")
                 numero2 = float(input("ingresa el segundo numero: "))
             resultado = calcular_division(numero1, numero2)
-            print(resultado)
+            print(f"ans: {resultado}")
             #aca si el numero2 vale 0, el programa se cae ya que no se
             #puede dividir entre cero
 
