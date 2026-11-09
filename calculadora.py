@@ -70,6 +70,9 @@ def division_fracciones(num1, den1, num2, den2):
 
     return numerador, denominador
 
+def calcular_potencia(base, exponente):
+    potencia = base ** exponente  
+    return potencia
 
 
 def es_binario(texto):
@@ -94,10 +97,6 @@ def binario_a_decimal(binario):
         posicion = posicion + 1
 
     return decimal
-
-def calcular_potencia(base, exponente):
-    potencia = base ** exponente  
-    return potencia
 
 def decimal_a_binario(numero):
     if numero == 0:

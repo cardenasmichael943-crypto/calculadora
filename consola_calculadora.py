@@ -1,4 +1,5 @@
-#este es nuestro archivo pincipal para ejecutar la calculadora
+#este es nuestro archivo pr
+# incipal para ejecutar la calculadora
 
 #¿que haces este archivo?
 #este arcchivo hace tres cosas cuando se ejecuta las cuales son:
@@ -6,7 +7,6 @@
 #   2.Pide al usuario los datos (numeros, fraciones, binarios, etc...)
 #   3. Llama a las funciones de calculadora.py para hacer la cuenta
 #      y muestra el resultado.
-
 
 
 
@@ -354,10 +354,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
                 print(resultado)
 
                 
-
         
-
-
 ejecutar_calculadora()
 
 
@@ -367,5 +364,5 @@ ejecutar_calculadora()
 #hexadecimal a decimal
 #suma y resta de binarios
 #raiz cubica
-
+#logica proposional
 
