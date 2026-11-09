@@ -129,3 +129,47 @@ def resta_binarios(binario1, binario2):
         resultado = decimal_a_binario(resta)
 
     return resultado
+
+
+
+
+
+def agregar_termino(texto, coeficiente, variable):
+    if coeficiente >= 0:
+        texto = texto + " + " + str(coeficiente) + variable
+    else:
+        texto = texto + " - " + str(abs(coeficiente)) + variable
+    return texto
+
+
+def polinomio_a_texto(a, b, c):
+    texto = str(a) + "x^2"
+    texto = agregar_termino(texto, b, "x")
+    texto = agregar_termino(texto, c, "")
+    return texto
+
+
+def polinomio4_a_texto(a, b, c, d, e):
+    texto = str(a) + "x^4"
+    texto = agregar_termino(texto, b, "x^3")
+    texto = agregar_termino(texto, c, "x^2")
+    texto = agregar_termino(texto, d, "x")
+    texto = agregar_termino(texto, e, "")
+    return texto
+
+
+def sumar_polinomios(a1, b1, c1, a2, b2, c2):
+    return a1 + a2, b1 + b2, c1 + c2
+
+
+def restar_polinomios(a1, b1, c1, a2, b2, c2):
+    return a1 - a2, b1 - b2, c1 - c2
+
+
+def multiplicar_polinomios(a1, b1, c1, a2, b2, c2):
+    a = a1 * a2
+    b = a1 * b2 + b1 * a2
+    c = a1 * c2 + b1 * b2 + c1 * a2
+    d = b1 * c2 + c1 * b2
+    e = c1 * c2
+    return a, b, c, d, e
