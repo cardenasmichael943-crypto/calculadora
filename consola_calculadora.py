@@ -1,8 +1,7 @@
-#este es nuestro archivo pr
-# incipal para ejecutar la calculadora
-
+#este es nuestro archivo principal
+#principal para ejecutar la calculadora
 #¿que haces este archivo?
-#este arcchivo hace tres cosas cuando se ejecuta las cuales son:
+#este archivo hace tres cosas cuando se ejecuta las cuales son:
 #   1. muestra el menu de opciones
 #   2.Pide al usuario los datos (numeros, fraciones, binarios, etc...)
 #   3. Llama a las funciones de calculadora.py para hacer la cuenta
@@ -10,7 +9,7 @@
 
 
 
-from calculadora import *      #Importamos el archvivo calculadora.py, para traer
+from calculadora import *      #Importamos el archivo calculadora.py, para
                                #traer todas las funciones y poder usarlas aqui
                                                   
 
