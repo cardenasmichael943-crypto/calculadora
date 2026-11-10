@@ -48,7 +48,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
         print("12.decimal a binario")
         print("13.suma de binarios")
         print("14.resta de binarios")
-        print("15.operaciones con polinomios (suma, resta y multiplicacion)")
+        
        
     
         print("--------------------------------------------")
@@ -63,7 +63,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
 
         #Bloqueo: si lo que escribio el usuario No esta en la lista de oopciones
         #Valida, avisa y cierra el programa 
-        if operacion not in ["0","1", "2", "3", "4", "5", "6", "7", "8", "9","10","11","12","13","14","15"]:
+        if operacion not in ["0","1", "2", "3", "4", "5", "6", "7", "8", "9","10","11","12","13","14"]:
             print("esta opcion no esta")
             break  #sale del ciclo principal  y termina el programa
 
@@ -199,7 +199,8 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             print("el resultado es:", numerador, "/", denominador)
             
                 #operacion 9 Division de fracciones
-            #igual que la opcion 6, pero en esta se llama la funcion division_fracciones      
+            #igual que la opcion 6, pero en esta se llama la funcion division_fracciones   
+            # si el num2 es 0 no se puede dividir la fracion   
         elif operacion == "9":
             print("primera fraccion")
             num1 = int(input("numerador: "))
@@ -211,10 +212,10 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
 
             print("segunda fraccion")
             num2 = int(input("numerador: "))
-            while num2 == 0:
-                print("no se puede dividir entre una fraccion que vale 0")
-                num2 = int(input("numerador: "))
-            den2 = int(input("denominador: "))
+            while num2 == 0:                        # si el numerador es 0, la fraccion vale 0...
+                print("no se puede dividir entre una fraccion que vale 0")  # ...y no se puede dividir entre ella
+                num2 = int(input("numerador: "))        # lo pide otra vez
+            den2 = int(input("denominador: "))      
             while den2 == 0:
                 print("el denominador no puede ser 0")
                 den2 = int(input("denominador: "))
@@ -222,57 +223,71 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             numerador, denominador = division_fracciones(num1, den1, num2, den2)
             print("el resultado es:", numerador, "/", denominador)
 
+
+            #operacion 11 Potencia
+
         elif operacion == "10":
         
-            base = int(input("ingresa la base: "))
-            exponente = int(input("ingresa el exponente: "))
+            base = int(input("ingresa la base: "))      #el numero que se va a elevar
+            exponente = int(input("ingresa el exponente: ")) # a que potencia se eleva
 
+            # 0 elevado a un exponente negativo da error, asi que se revisa:
             while base == 0 and exponente < 0:
                 print("0 no se puede elevar a un exponente negativo")
-                exponente = int(input("ingresa el exponente: "))
+                exponente = int(input("ingresa el exponente: ")) # pide otro exponente
 
-            resultado = calcular_potencia(base, exponente)
-            print(resultado)
-                
+            resultado = calcular_potencia(base, exponente) # calcula la potencia
+            print(resultado)                               # muestra el resultado 
+
+
+            #operacion 11 Binario a decimal     
 
         elif operacion == "11":
+            # El binario se pide como TEXTO (sin int ni float),
+            # porque hay que revisar cada digito.
 
             binario = input("ingresa el numero binario: ")
-            while es_binario(binario) == False:
-                print("un numero binario solo tiene 0 y 1")
-                binario = input("ingresa el numero binario: ")
+            while es_binario(binario) == False:              # mientras NO sea un binario valido...
+                print("un numero binario solo tiene 0 y 1")  # ...avisa
+                binario = input("ingresa el numero binario: ") # ...y lo pide otra vez
 
-            decimal = binario_a_decimal(binario)
-            print("el numero en decimal es:", decimal)
+            decimal = binario_a_decimal(binario)         # convierte el binario a decimal, que es donde se llama la funcion binario_a_decimal
+            print("el numero en decimal es:", decimal)   # muestra el resultado
             
 
+            #operacion 12 Decimal a binario
        
         elif operacion == "12":
 
-            numero = int(input("ingresa el numero decimal: "))
-            while numero < 0:
-                print("el numero no puede ser negativo")
-                numero = int(input("ingresa el numero decimal: "))
+            numero = int(input("ingresa el numero decimal: "))      # pide un numero entero
+            while numero < 0:                                       # si es negativo
+                print("el numero no puede ser negativo")             # avisa
+                numero = int(input("ingresa el numero decimal: "))  # y lo pide otra vez
 
-            binario = decimal_a_binario(numero)
-            print("el numero en binario es:", binario)
-            
+            binario = decimal_a_binario(numero)                      # convierte a binario
+            print("el numero en binario es:", binario)               # muestra el resultado
+
+
+            #operacion 13 Suma de binarios
 
         elif operacion == "13":
 
             binario1 = input("ingresa el primer numero binario: ")
-            while es_binario(binario1) == False:
-                print("un numero binario solo tiene 0 y 1")
-                binario1 = input("ingresa el primer numero binario: ")
+            while es_binario(binario1) == False:                    # revisa que solo tenga 0 y 1
+                print("un numero binario solo tiene 0 y 1")         #si coloco un numero decimal avisa que solo debe tener 0 y 1
+                binario1 = input("ingresa el primer numero binario: ") #vuelve a pedir el numero
 
             binario2 = input("ingresa el segundo numero binario: ")
-            while es_binario(binario2) == False:
+            while es_binario(binario2) == False:                     # revisa que solo tenga 0 y 1
                 print("un numero binario solo tiene 0 y 1")
                 binario2 = input("ingresa el segundo numero binario: ")
 
-            resultado = sumar_binarios(binario1, binario2)
-            print("la suma en binario es:", resultado)
-            
+            resultado = sumar_binarios(binario1, binario2)          # suma los dos binarios
+            print("la suma en binario es:", resultado)              # muestra el resultado
+
+
+            #operacion 14 Resta de binarios 
+            #es igual que la suma pero en este caso se restan 
 
         elif operacion == "14":
         
@@ -285,59 +300,36 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             while es_binario(binario2) == False:
                 print("un numero binario solo tiene 0 y 1")
                 binario2 = input("ingresa el segundo numero binario: ")
-
-            resultado = resta_binarios(binario1, binario2)
-            print("la resta en binario es:", resultado)
-
-
-
-        #POLINOMIOS
-
-        elif operacion == "15":
-
-            print("primer polinomio (ax^2 + bx + c)")
-            a1 = float(input("a: "))
-            b1 = float(input("b: "))
-            c1 = float(input("c: "))
-
-            print("segundo polinomio (ax^2 + bx + c)")
-            a2 = float(input("a: "))
-            b2 = float(input("b: "))
-            c2 = float(input("c: "))
-
-            print("-------------------------------------------")
-            print("primer polinomio:  ", polinomio_a_texto(a1, b1, c1))
-            print("segundo polinomio: ", polinomio_a_texto(a2, b2, c2))
-
-            a, b, c = sumar_polinomios(a1, b1, c1, a2, b2, c2)
-            print("suma:  ", polinomio_a_texto(a, b, c))
-
-            a, b, c = restar_polinomios(a1, b1, c1, a2, b2, c2)
-            print("resta: ", polinomio_a_texto(a, b, c))
-
-            a, b, c, d, e = multiplicar_polinomios(a1, b1, c1, a2, b2, c2)
-            print("multiplicacion: ", polinomio4_a_texto(a, b, c, d, e))
+ 
+            resultado = resta_binarios(binario1, binario2)  # resta los dos binarios
+            print("la resta en binario es:", resultado)     # muestra el resultado (con "-" si es negativo)
 
 
     
-
+            #si la opcion es 0 el proceso es finalizado y se cierrra el ciclo
         elif operacion == "0":
             print("proceso finalizado")
             break
+
+
+        #pregunta si desea agregar otro numero solo a las apoeraciones del 1 al 4
+        # Permite seguir operando con el resultado que ya se tenia.
+        # Ejemplo con suma: 2 + 3 = 5, luego "otro numero" 4 -> 5 + 4 = 9
             
         if operacion == "1" or operacion == "2" or operacion == "3" or operacion == "4":
 
 
-            while True:
+            while True:           # ciclo interno: se repite hasta que el usuario escriba "no"
 
                 print("----------------------------------------------")
                 otro_numero = input("deseas ingresar otro numero (presiona enter para continuar y escribe no para terminar): ")
-                if otro_numero == "no":
+                if otro_numero == "no":                             #si escribe no muestra el total y sale del ciclo interno y vuelve al ciclo principal
                     print("el resultado total es:", resultado)
                     break
 
-                numero3 = float(input("ingresar otro numero: "))
+                numero3 = float(input("ingresar otro numero: "))    #pide el otro numero 
 
+                # Opera el resultado que ya tenia con el numero nuevo
                 if operacion == "1":
                     resultado = calcular_suma(resultado, numero3)
 
@@ -352,9 +344,11 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
 
                 print(resultado)
 
+    # Aqui termina el ciclo principal. Como no hay un "break" al final,
+    # el programa vuelve solo al menu (la opcion 0 es la que lo cierra).
                 
         
-ejecutar_calculadora()
+ejecutar_calculadora()          # Esta linea llama a la funcion principal: aqui empieza a correr el programa
 
 
 
