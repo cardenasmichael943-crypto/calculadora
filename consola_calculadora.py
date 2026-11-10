@@ -247,8 +247,8 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
             # porque hay que revisar cada digito.
 
             binario = input("ingresa el numero binario: ")
-            while es_binario(binario) == False:              # mientras NO sea un binario valido...
-                print("un numero binario solo tiene 0 y 1")  # ...avisa
+            while es_binario(binario) == False:              # mientras NO sea un binario valido o el texto esta vacio
+                print("un numero binario solo tiene 0 y 1")  # avisa
                 binario = input("ingresa el numero binario: ") # ...y lo pide otra vez
 
             decimal = binario_a_decimal(binario)         # convierte el binario a decimal, que es donde se llama la funcion binario_a_decimal
@@ -274,7 +274,7 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
 
             binario1 = input("ingresa el primer numero binario: ")
             while es_binario(binario1) == False:                    # revisa que solo tenga 0 y 1
-                print("un numero binario solo tiene 0 y 1")         #si coloco un numero decimal avisa que solo debe tener 0 y 1
+                print("un numero binario solo tiene 0 y 1")         #si coloco un numero decimal o no coloco nada avisa que solo debe tener 0 y 1
                 binario1 = input("ingresa el primer numero binario: ") #vuelve a pedir el numero
 
             binario2 = input("ingresa el segundo numero binario: ")

@@ -180,10 +180,34 @@ def calcular_potencia(base, exponente):
     return potencia               # entrega el resultado
 
 
+
+
 #Numeros Binarios 
 # El sistema binario solo usa dos digitos: 0 y 1.
 # Los numeros binarios se manejan como TEXTO (por ejemplo "1011"),
 # porque hay que mirar cada digito por separado.
+# Como se lee un numero binario?
+#   Cada lugar del numero vale el DOBLE que el lugar que esta a su
+#   derecha. De derecha a izquierda los lugares valen: 1, 2, 4, 8, 16...
+#   Se suman solo los lugares que tienen un 1.
+#
+#   Ejemplo con 1011:
+#       lugar:    8     4     2     1
+#       digito:   1     0     1     1
+#       vale:     8  +  0  +  2  +  1   =  11
+#   Entonces el binario 1011 es el decimal 11.
+# POR QUE LOS BINARIOS SE MANEJAN COMO TEXTO?
+#   Se guardan como TEXTO, entre comillas, por ejemplo "1011".
+#   Asi se puede mirar cada digito por separado.
+#
+# COMO SE SACA UN DIGITO DE UN TEXTO?
+#   Con corchetes y la posicion. La posicion empieza a contar desde 0:
+#       texto = "1011"
+#       texto[0]  es  "1"    (el primer digito)
+#       texto[1]  es  "0"    (el segundo)
+#       texto[2]  es  "1"    (el tercero)
+#       texto[3]  es  "1"    (el cuarto y ultimo)
+#   Y len(texto) dice cuantos caracteres tiene:  len("1011") es 4.
 
 
 # Funcion: es_binario
@@ -207,46 +231,121 @@ def es_binario(texto):
     return True  # si reviso todo y no encontro nada raro, si es binario 
 
 
+
+# Funcion: binario_a_decimal
+# Que hace: convierte un numero binario a un numero normal (decimal).
+# Recibe:   binario (texto con ceros y unos, por ejemplo "1011").
+# Devuelve: el numero en decimal.
+# Ejemplo:  binario_a_decimal("1011")  da  11
+#
+# Como funciona:
+#   Lee los digitos de izquierda a derecha. En cada vuelta hace dos cosas:
+#       1) DUPLICA lo que llevaba acumulado
+#       2) le SUMA el digito nuevo
+#   Duplicar es como correr todo un lugar hacia la izquierda: por eso
+#   los primeros digitos terminan valiendo mas (8, 4, 2...).
+#
+#   Paso a paso con "1011":
+#   (la variable "decimal" guarda lo que se lleva acumulado; empieza en 0)
+#
+#       vuelta  digito  llevaba   cuenta (llevaba x 2 + digito)   queda
+#         1       1       0       0 x 2 + 1  =  0 + 1  =  1         1
+#         2       0       1       1 x 2 + 0  =  2 + 0  =  2         2
+#         3       1       2       2 x 2 + 1  =  4 + 1  =  5         5
+#         4       1       5       5 x 2 + 1  = 10 + 1  = 11        11
+
 def binario_a_decimal(binario):
-    decimal = 0
+    decimal = 0         # aqui se va acumulando el resultado; empieza en 0
 
-    posicion = 0
-    while posicion < len(binario):
-        decimal = decimal * 2 + int(binario[posicion])
-        posicion = posicion + 1
+    posicion = 0         # empieza por el primer digito (posicion 0)
+    while posicion < len(binario):      # repite hasta recorrer todos los digitos
+        decimal = decimal * 2 + int(binario[posicion])  # duplica lo acumulado y suma el digito nuevo.
+                                                        # binario[posicion] es un texto ("1" o "0"); int() lo convierte en numero para poder sumarlo
+        posicion = posicion + 1      # paso al siguiente digito
 
-    return decimal
+    return decimal             # entrega el numero ya convertido a decimal
 
+
+
+# Funcion: decimal_a_binario
+# Que hace: convierte un numero normal (decimal) a binario.
+# Recibe:   numero (un entero, cero o mayor).
+# Devuelve: el binario, como texto.
+# Ejemplo:  decimal_a_binario(11)  da  "1011"
+#
+# Como funciona:
+#   Divide el numero entre 2 una y otra vez, y en cada division guarda
+#   lo que SOBRA (que siempre es 0 o 1). Se sigue hasta que el numero
+#   llega a 0. Los sobrantes, leidos de ABAJO hacia ARRIBA, forman el
+#   binario.
+#
+#   Paso a paso con 11:
+#       division     resultado    sobra
+#       11 / 2          5           1
+#        5 / 2          2           1
+#        2 / 2          1           0
+#        1 / 2          0           1
+#   Leyendo los sobrantes de abajo hacia arriba:  1 0 1 1  ->  "1011"
 def decimal_a_binario(numero):
-    if numero == 0:
-        return "0"
+    if numero == 0:     # el 0 se escribe igual en binario...
+        return "0"      # asi que lo entrega directo (sin esto, el resultado quedaria vacio)
 
-    binario = ""
-    while numero > 0:
-        resto = numero % 2
-        binario = str(resto) + binario
-        numero = numero // 2
+    binario = ""         # texto vacio donde se van guardando los digitos
+    while numero > 0:     # repite mientras el numero sea mayor que 0
+        resto = numero % 2         # % da lo que sobra al dividir entre 2; siempre es 0 o 1
+        binario = str(resto) + binario    # str() convierte el numero en texto; se pone AL PRINCIPIO del binario para que quede en el orden correcto
+        numero = numero // 2         # // divide entre 2 sin decimales (11 // 2 = 5); asi el numero va bajando hasta llegar a 0
 
-    return binario
+    return binario      # entrega el binario ya armado
+
+
+# Funcion: sumar_binarios
+# Que hace: suma dos numeros binarios.
+# Recibe:   binario1 y binario2 (textos con ceros y unos).
+# Devuelve: la suma, en binario (como texto).
+# Ejemplo:  sumar_binarios("101", "11")  da  "1000"
+#
+# Como funciona (3 pasos):
+#   1) pasa cada binario a decimal
+#   2) suma los dos decimales
+#   3) pasa el resultado otra vez a binario
+#   Con "101" y "11":   5 + 3 = 8   y   8 en binario es "1000"
 
 def sumar_binarios(binario1, binario2):
-    decimal1 = binario_a_decimal(binario1)
-    decimal2 = binario_a_decimal(binario2)
-    suma = decimal1 + decimal2
-    resultado = decimal_a_binario(suma)
-    return resultado
+    decimal1 = binario_a_decimal(binario1)  # paso 1: el primer binario pasa a decimal ("101" -> 5)
+    decimal2 = binario_a_decimal(binario2)  # paso 1: el segundo binario pasa a decimal ("11" -> 3)
+    suma = decimal1 + decimal2              # paso 2: suma los dos decimales (5 + 3 = 8)
+    resultado = decimal_a_binario(suma)     # paso 3: la suma pasa a binario (8 -> "1000")
+    return resultado                         # entrega el resultado
+
+
+
+# Funcion: resta_binarios
+# Que hace: resta dos numeros binarios.
+# Recibe:   binario1 y binario2 (textos con ceros y unos).
+# Devuelve: la resta, en binario (con signo "-" si da negativa).
+# Ejemplos: resta_binarios("101", "11")  da  "10"     (5 - 3 = 2)
+#           resta_binarios("11", "101")  da  "-10"    (3 - 5 = -2)
+#
+# Como funciona (los mismos 3 pasos de la suma, pero restando):
+#   1) pasa cada binario a decimal
+#   2) resta los dos decimales
+#   3) pasa el resultado a binario
+#   Ojo: decimal_a_binario no sabe convertir numeros negativos, asi que
+#   si la resta da negativa, primero se vuelve positiva, se convierte,
+#   y al final se le pone el signo "-" adelante.
 
 def resta_binarios(binario1, binario2):
-    decimal1 = binario_a_decimal(binario1)
-    decimal2 = binario_a_decimal(binario2)
-    resta = decimal1 - decimal2
+    decimal1 = binario_a_decimal(binario1)     # paso 1: el primer binario pasa a decimal
+    decimal2 = binario_a_decimal(binario2)     # paso 1: el segundo binario pasa a decimal
+    resta = decimal1 - decimal2                # paso 2: resta los dos decimales
 
-    if resta < 0:
-        resultado = "-" + decimal_a_binario(resta * -1)
-    else:
-        resultado = decimal_a_binario(resta)
+    if resta < 0:                      # si la resta dio un numero negativo (ej: -2)
+        resultado = "-" + decimal_a_binario(resta * -1)  # lo vuelve positivo (resta * -1 da 2), lo pasa a binario ("10") y le pone el "-" adelante ("-10")
+    else:                # si la resta NO es negativa
+        resultado = decimal_a_binario(resta)      #la pasa a binario directamente
 
-    return resultado
+    return resultado          # entrega el resultado
 
 
 
