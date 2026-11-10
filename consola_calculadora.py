@@ -350,12 +350,3 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
         
 ejecutar_calculadora()          # Esta linea llama a la funcion principal: aqui empieza a correr el programa
 
-
-
-#decimal a hexadecimal
-#binario a hexadecimal
-#hexadecimal a decimal
-#suma y resta de binarios
-#raiz cubica
-#logica proposional
-
