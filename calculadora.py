@@ -49,6 +49,8 @@ def calcular_division (numero1, numero2):
     return division                 #entrega el resultado
 
 
+
+#Funcuion: calcular raiz
 # Por que se usa  ** 0.5 ?
 #   Sacar la raiz cuadrada es buscar el numero que, multiplicado
 #   por si mismo, da el numero que tenemos.
@@ -77,6 +79,7 @@ def calcular_raiz(numero):
 # Que hace: busca el numero MAS GRANDE que divide exacto a otros dos.
 #           Sirve para simplificar fracciones.
 # Recibe:   numero1 y numero2.
+#busca el número más grande que puede dividir exactamente al numerador y al denominador. En este caso es 5.
 # Devuelve: el divisor comun mas grande.
 # Ejemplo:  con 8 y 16 da 8, porque 8 divide exacto a los dos.
 #           Asi, la fraccion 8/16 se simplifica a 1/2 (dividiendo
@@ -306,9 +309,9 @@ def decimal_a_binario(numero):
 # Ejemplo:  sumar_binarios("101", "11")  da  "1000"
 #
 # Como funciona (3 pasos):
-#   1) pasa cada binario a decimal
-#   2) suma los dos decimales
-#   3) pasa el resultado otra vez a binario
+#   1 pasa cada binario a decimal
+#   2 suma los dos decimales
+#   3 pasa el resultado otra vez a binario
 #   Con "101" y "11":   5 + 3 = 8   y   8 en binario es "1000"
 
 def sumar_binarios(binario1, binario2):
@@ -328,9 +331,9 @@ def sumar_binarios(binario1, binario2):
 #           resta_binarios("11", "101")  da  "-10"    (3 - 5 = -2)
 #
 # Como funciona (los mismos 3 pasos de la suma, pero restando):
-#   1) pasa cada binario a decimal
-#   2) resta los dos decimales
-#   3) pasa el resultado a binario
+#   1 pasa cada binario a decimal
+#   2 resta los dos decimales
+#   3 pasa el resultado a binario
 #   Ojo: decimal_a_binario no sabe convertir numeros negativos, asi que
 #   si la resta da negativa, primero se vuelve positiva, se convierte,
 #   y al final se le pone el signo "-" adelante.

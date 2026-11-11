@@ -340,6 +340,9 @@ def ejecutar_calculadora():   #la funcion principal para ejecutar todo el progra
                     resultado = calcular_multiplicacion(resultado, numero3)
 
                 elif operacion == "4":
+                    while numero3 == 0:
+                        print("no se puede dividir entre cero")
+                        numero3 = float(input("ingresar otro numero: "))
                     resultado = calcular_division(resultado, numero3)
 
                 print(resultado)
